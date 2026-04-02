@@ -1,6 +1,6 @@
 import express from "express";
-import errorHandler from "../middleware/error-handler.js";
-import notFound from "../middleware/not-found.js";
+import errorHandler from "./middleware/error-handler.js";
+import notFound from "./middleware/not-found.js";
 
 const app = express();
 
@@ -9,7 +9,7 @@ app.use((req, res, next) => {
   console.log("Path:", req.path);
   console.log("Query:", req.query);
   next();
-})
+});
 
 app.get("/", (req, res) => {
   res.send("Hello, World!");
@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 
 app.post("/testpost", (req, res) => {
   res.json({message: "Everything Worked."});
-})
+});
 
 app.use(notFound);
 app.use(errorHandler);

@@ -78,7 +78,7 @@ Start this app from your VSCode terminal with:
 node app.js
 ```
 
-Go to your browser, and go to the URL http://localhost:3000.  
+Open your browser, and go to the URL http://localhost:3000.  
 Ah, ok, Hello World. It's a start.
 
 This file, `app.js`, is the first file for your final project. You'll keep adding on to this file and creating modules that it calls.
@@ -117,7 +117,7 @@ app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 ```
-In this case, the browser does see a response, but in the server log, you see a bad error message.  
+In this case, the browser does receive a response, but the server log shows an unexpected framework error (for example, "Cannot set headers after they are sent"), which means the handler tried to respond more than once.  
 If you see this error in future development, you'll know what caused it. 
 
 Now try this (you have to restart the server again):
@@ -220,7 +220,7 @@ An unexpected error might occur within a try block of your route handler. Within
 
 ## More Middleware
 
-Try this URL: http://localhost:3000/nonsense. Again, you get an error — a 404. You've seen those. You need to handle this case. 
+Try this URL: http://localhost:3000/nonsense. Again, you get an error — a 404. This is a common HTTP error. You need to handle this case. 
 
 Create a file `./middleware/not-found.js`.  
 You need a `req` and a `res`, but no `next` in this case. You return `StatusCodes.NOT_FOUND` and the message  
@@ -240,7 +240,7 @@ In this case, the error handler is called, and the error is passed to it.
 
 **Exiting Cleanly**
 
-Your Express program opens a port.  
+Your Express program opens a network port.  
 You need to be sure that port is closed when the program exits. If there are other open connections, such as database connections, they must also be cleaned up. If not, you may find that your program becomes a zombie process, and that the port you had been listening on is still tied up. This is especially important when you are running a debugger or an automated test.  You also need to catch errors the server reports with a `server.on()` statement.
 
 Here is some code to put at the bottom of `app.js`. Please make sure it is placed before the `export { app, server };` statement:
