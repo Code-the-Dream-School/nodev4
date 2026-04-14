@@ -61,7 +61,7 @@
   - Converts the callback code to use Promises, then async/await
   - Uses `try/catch` for error handling
   - **Important:** For each async pattern (callback, promise, async/await), your console output should include the phrase `Hello, async world!` to match the file content and test expectations.
-  - **File Setup:** In your `sample-files` directory, create a `sample.txt` file containing exactly "Hello, async world!" (without quotes) for the async demo to read.
+  - **File Setup:** Do **not** manually create `sample.txt` ahead of time. Your `async-demo.js` should create `sample-files/sample.txt` programmatically with exactly `Hello, async world!`, then read that file in the callback, promise, and async/await examples.
   - **Note:** Use ESM import syntax (e.g., `import fs from 'fs'` or `import fs from 'fs/promises'`).
 
 **Console Output Examples:**
