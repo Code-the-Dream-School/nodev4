@@ -57,9 +57,9 @@ For REST requests, GET, POST, PUT, PATCH, and DELETE are used.  Each HTTP reques
 
 - URL or path parameters.  If present, these are additional parameters parsed from the URL.
 
-- Headers.  These are key-value pairs.  For REST requests, the "Content-Type" header is always used, and it typicallyoften has the value "application/json".  There are many other headers.
+- Headers.  These are key-value pairs.  For REST requests, the "Content-Type" header is commonly used, and it typically has the value "application/json".  There are many other headers.
 
-- A body.  POST, PUT and PATCH requests often have a body. Responses for each of the methods also often have a body.  For REST, the body is usually JSON.  By convention, POST operations are used to create some data on the back end, PATCH to update that data, and PUT to replace that data.  Never use GET requests to change data!
+- A body.  POST, PUT and PATCH requests often have a body. Responses for each of the methods also often have a body.  For REST, the body is usually JSON.  By convention, POST operations are used to create some data on the back end, PATCH to update that data, and PUT to replace that data.  Never use GET requests to modify data!
 
 For every HTTP request, there is exactly one HTTP response (although the body of the response, if it is long, might be broken up into chunks.  Each HTTP response packet also has components:
 
@@ -199,7 +199,7 @@ Request → Middleware 1 → Middleware 2 → Middleware 3 → Route Handler →
 - Call next().
 - Throw an error.
 
-Even route handlers sometimes call `next(error)` to pass the error to the error handler.  Middleware functions often call next() withouut parameters, to call the next middleware in the chain or the route handler for the request, but they also might call `next(error)` in some cases.
+Even route handlers sometimes call `next(error)` to pass the error to the error handler.  Middleware functions often call next() without parameters, to call the next middleware in the chain or the route handler for the request, but they also might call `next(error)` in some cases.
 
 4. If `next(error)` is called or an error is thrown, the error handler is called and passed the error.  An error might be thrown from the code of the middleware function or route handler. Or it might be thrown by one of the function calls that the middleware function or route handler makes.  In the latter case, if it is a known type of error, the middleware function or route handler may catch the error and send an appropriate response to the requester.  But if it is not an error of known type, it is a 500: an internal server error.  Route handlers and middleware functions don't need to catch unknown error types, and if they do, they can just throw them again.
 
@@ -270,7 +270,7 @@ You can access the following elements of the req:
 
 req.method
 req.path
-req.params  HTML path parameters, if any.  When you configure a route with a route handler, you can tell Express where these are in the URL.
+req.params  Route path parameters, if any.  When you configure a route with a route handler, you can tell Express where these are in the URL.
 req.query  query parameters of the request, if any
 req.body    The body of the request, if any
 req.host    The host that this Express app is running on

@@ -12,7 +12,7 @@ You have started work on the application you'll use for your final project.  You
 
 For your final project, you'll have users with todo lists.  A user will be able to register with the application, log on, and create, modify, and delete tasks in their todo lists.  You'll now create the route that does the register.  That's a POST operation for the `/api/users/register` path.  Add that to app.js, before the 404 handler.  For now, you can just have it return a message.  By convention, REST API routes start with `/api'.
 
-You cannot test this with the browser.  Browsers send GET requests, and only do POSTs from within forms.  Postman is the tool you'll use.  Start it up.  On the upper left-hand side, you see a `new` button.  Create a new collection, called `node-homework`.  On the upper right-hand side, you see an icon that is a rectangle with a little eye.  No, it doesn't mean the Illuminati.  This is the Postman environment.  Create an environment variable called host, with a value of `http://localhost:3000`.  This is the base URL for your requests.  When it comes time to test your application as it is deployed on the internet, you can just change this environment variable.
+You cannot test this with the browser.  Browsers send GET requests, and only do POSTs from within forms.  Postman is the tool you'll use.  Start it up.  On the upper left-hand side, you see a `new` button.  Create a new collection, called `node-homework`.  On the upper right-hand side, you see an icon that is a rectangle with a little eye.  No, it doesn't mean the Illuminati.  This icon represents the Postman environment.  Create an environment variable called host, with a value of `http://localhost:3000`.  This is the base URL for your requests.  When it comes time to test your application as it is deployed on the internet, you can just change this environment variable.
 
 Hover over the node-homework collection and you'll see three dots. Click on those, and select 'add request'.  Give it a name, perhaps `register`.  A new request, by default, is a GET, but there is a pulldown to switch it to POST.  Save the request, and then send it.  If your Express app is running, you should see your message come back.  Of course, to create a user record, you need data in the body of the request.  So, click on the body tab for the request.  Select the `raw` option.  There's a pulldown to the right that says `Text`.  Click on that, and choose the JSON option.  Then, put JSON data in for the user you want to create.  You need a name, an email, and a password.  Remember that this is JSON, not a JavaScript object, so you have to have double quotes around the attribute names and string values.  Save the request again, and then send it.  The result is the same of course -- the request handler doesn't do more than send a message at the moment.
 
@@ -38,7 +38,7 @@ Then try the Postman request again.  You see the body in your server log, but yo
 What you should do for this request is store the user record.  Eventually you'll store it in a database, but we haven't learned how to do that yet.  So, for the moment, you can just store it in memory.  Use the following globals:
 
 ```js 
-global.user_id // The logged on user.  This will be undefined or null if no user is logged on.
+global.user_id // Stores the currently logged-on user object, or null if no user is logged on.
 global.users // an array of user objects, initially empty.
 global.tasks   // an array of task object, initially empty.
 ```
@@ -86,7 +86,7 @@ Well ... we'll fix all of that, over time.
 
 ### **Keeping Your Code Organized: Creating a Controller**
 
-You are going to have to create a couple more post routes.  Also, you are going to have to add a lot of logic, to solve problems 1 through 5 above.  You don't want all of that in app.js.  So, create a directory called controllers. Within it, create a file called userController.js.  Within that, create a function called register.  The register() function takes a req and a res, and the body is just as above.  You can move any `import` for shared helpers (such as a memory store module) into that file using a relative path.  You should also `import` from `http-status-codes`, and instead of using 201, you use `StatusCodes.CREATED`.  Then, export `register` from this module (for example `export async function register` or `export { register, ... }`).
+You are going to have to create a couple more post routes.  Also, you are going to have to add a lot of logic, to solve problems 1 through 5 above.  You don't want all of that in app.js.  So, create a directory called controllers. Within it, create a file called userController.js.  Within that, create a function called register.  The register() function takes a req and a res, and the body is just as above.  Continue using the in-memory globals from earlier in the assignment (`global.users`, `global.user_id`, and `global.tasks`).  You should also `import` from `http-status-codes`, and instead of using 201, you use `StatusCodes.CREATED`.  Then, export `register` from this module (for example `export async function register` or `export { register, ... }`).
 
 ### **On Naming**
 
@@ -169,7 +169,7 @@ You're volunteering for a local dog rescue, **The Good Boys and Girls Club**, to
 
 They’ve already built the main API routes, but their middleware is a mix of broken and missing. Your job is to clean things up and ensure the app behaves, just like all their dogs!
 
-The site serves adorable images of adoptable dogs, accepts applications from potential adopters, and includes a test route for simulating server errors. It just needs your help to become a robust, production-ready app using Express middleware the right way.
+The site serves images of adoptable dogs, accepts applications from potential adopters, and includes a test route for simulating server errors. It just needs your help to become a robust, production-ready app using Express middleware correctly.
 
 You'll be implementing middleware that handles things like:
 
@@ -252,7 +252,7 @@ Your work will involve editing `app.js` to add the expected middleware. You will
 
 1. **Built-In Middleware**  
 
-   * The `POST /adopt` endpoint doesn’t seem to be processing requests as expected. This route expects a `name`, `email`, and `dogName`, but the controller keeps erroring. Implement the appropriate middleware to parse JSON requests on this endpoint.  
+   * The `POST /adopt` endpoint doesn’t seem to be processing requests as expected. This route expects a `name`, `email`, and `dogName`, but the controller continues to throw errors. Implement the appropriate middleware to parse JSON requests on this endpoint.  
    * The images for adoptable dogs are not being served on  `GET /images/**` as expected. Implement the appropriate middleware to serve the images of adoptable dogs from the `public/images/..` directory on this endpoint.  
 
 2. **Custom Middleware**  
@@ -300,7 +300,7 @@ Your work will involve editing `app.js` to add the expected middleware. You will
 
 3. **Custom Error Handling**  
 
-* Catch any uncaught errors and respond with a `500 Internal Server Error` error status and a JSON response body with the `requestId` (note: lowercase 'd') and an error message set to "Internal Server Error"
+* Catch any uncaught errors and respond with a `500 Internal Server Error` status code and a JSON response body with the `requestId` (note: lowercase 'd') and an error message set to "Internal Server Error"
 * The error response should be a JSON object: `{ error: "Internal Server Error", requestId: "..." }`
 * You can test this middleware with the `/error` endpoint
 
