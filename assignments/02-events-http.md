@@ -5,6 +5,14 @@
 - Create an `assignment2` ```git branch``` before you start.
 - **Testing Tool:** For testing POST requests and API endpoints, use the **Postman VS Code Extension**. Install it from the VS Code Extensions marketplace if you haven't already. This extension allows you to test localhost requests directly from VS Code without needing the desktop agent. For installation instructions, see the [Postman VS Code Extension documentation](https://learning.postman.com/docs/developer/vs-code-extension/install/).
 
+## Postman Walkthrough (Watch This First)
+
+Before we start working with routes and before we use the word "endpoint", watch this quick Postman walkthrough:
+
+Postman Walkthrough: [Postman in VS Code (Quick Walkthrough)](https://www.youtube.com/watch?v=NR-s-zANqZs)
+
+**Quick note:** You don't need to understand routing yet. The goal is just to learn how to send a request to `http://localhost:3000` and read the response (status + body).
+
 ### Task 1: Practice With An Event Emitter and Listener
 - Inside your `assignment2` folder, create a file called `events.js`.
 - Create an emitter. Use an `emitter.on()` statement to listen to this emitter for the 'time' event. Whenever the listener receives the event, it should print out "Time received: " followed by the string it receives. Then, call `setInterval(callback, 5000)`. Your callback for the `setInterval` should emit a 'time' message with the current time as a string. Try it out. You use `Ctrl-C` to end the program.
