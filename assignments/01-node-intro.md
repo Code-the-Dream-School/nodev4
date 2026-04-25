@@ -105,6 +105,8 @@ node core-modules-demo.js
 
 The automated tests will check that your output matches the expected format. If a test fails, check that your console.log statements use the exact spacing and capitalization shown in the examples above.
 
+**Review Note:** The AI review tool (known as AirHub) can check code and structure, but it does not run your code in a server environment to verify that aspect runs properly. We will have human reviewers checking this aspect, so you may receive a passing assignment from AirHub that could still need revisions after a human has checked that your work runs properly in the correct environment. If your AI and human reviewer feedback don't match, trust the human review.
+
 ## Video Submission
 
 Record a short video (3–5 minutes) on YouTube, Loom, or similar platform. Share the link in your submission form.
