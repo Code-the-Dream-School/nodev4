@@ -1,0 +1,21 @@
+---
+name: Documentation Issue
+about: Report missing, outdated, or unclear documentation
+labels: documentation
+---
+
+## Description
+
+Explain the documentation issue. What part of the docs is affected?
+
+## Proposed Update
+
+Provide suggestions for correcting or improving the documentation.
+
+## References
+
+Link to the relevant page, section, or resource.
+
+## Additional Context
+
+Any other notes or context regarding this documentation issue.
