@@ -18,7 +18,7 @@ Create a task controller and a task router.  You need to support the following r
 
 4. PATCH "/api/tasks/:id" (`update`).  This updates the task with a particular ID for the currently logged on user.
 
-5. DELETE "/api/tasks/:id (`deleteTask`)".  This deletes the task with a particular ID for the currently logged on user.
+5. DELETE "/api/tasks/:id" (`deleteTask`).  This deletes the task with a particular ID for the currently logged on user.
 
 So, that's five functions you need in the task controller, and five routes that you need in the task router.  But, we have a few problems:
 
@@ -208,7 +208,7 @@ const {error, value} = userSchema.validate({name: "Bob", email: "nonsense", pass
 
 You do `{abortEarly: false}` so that you can get all the error information to report to the user, not just the first failure.  When the validate() call returns, if error is not null, there is something wrong with the request, and `error.message` says what the error is.  If error is null, then value has the object you want to store, which may be different from the original.  The email would have been converted to lower case, for example.  In this case, the email is invalid, the password fails the pattern, and favoriteColor is not part of the schema, so there are three errors. 
 
-Add validations to your create operations for users and tasks, and your to your update operation for tasks.  It is possible that these requests might be sent without a body, so you must first have:
+Add validations to your create operations for users and tasks, and to your update operation for tasks.  It is possible that these requests might be sent without a body, so you must first have:
 
 ```js
 if (!req.body) req.body = {};
@@ -218,7 +218,7 @@ Otherwise, validation won't work right.  You then validate `req.body`.  If you g
 
 ### **Storing Only a Hash of the Passwords**
 
-You should never store user passwords.  If your database were ever compromised, your users would be in big trouble, in part because a lot of people reuse passwords, and you would be in big trouble too.
+You should never store user passwords in plain text.  If your database were ever compromised, your users would be in big trouble, in part because a lot of people reuse passwords, and you would be in big trouble too.
 
 Instead, at user registration, you create a random salt, concatenate the password and the salt, and compute a cryptographically secure hash.  You store the hash plus the salt.  Each user's password has a different salt.  When the user logs on, you get the salt back out, concatenate the password the user provides with the salt, hash that, and compare that with what you've stored.  You need a cryptography routine to do the hashing.  The scrypt algorithm is a good one.   Although bcrypt is still common, it has known weaknesses and is considered now passé.  Scrypt is the old callback style, so you use util.promisify to convert it to promises.  Add the following code to userController.js:
 
@@ -244,7 +244,7 @@ async function comparePassword(inputPassword, storedHash) {
 
 This code implements the hashing described.  You can stare at it a bit, but your typical AI helper can generate this code any time.  There's not much to learn or remember. 
 
-Change the register function to call hashPassword.  Right now, a user entry looks like `{ name, email, password }`.  Instead, store `{name, email, hashedPassword }`.  Also, change the login method to use comparePassword.  Note that these are async functions, so you have to await the result. Once you have done all of this, test with Postman. Then run the automated tests with
+Change the register function to call hashPassword.  Right now, a user entry looks like `{ name, email, password }`.  Instead, store `{ name, email, hashedPassword }`.  Also, change the login method to use comparePassword.  Note that these are async functions, so you have to await the result. Once you have done all of this, test with Postman. Then run the automated tests with
 
 ```bash
 npm run tdd assignment4

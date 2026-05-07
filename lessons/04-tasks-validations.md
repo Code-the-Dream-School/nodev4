@@ -26,7 +26,7 @@ Whenever data is stored or changed, your API should verify the new or updated re
 
 Eventually (Lesson 6) you'll use a package called Prisma for data access.  Prisma can do data validation, so that it occurs automatically with the data access.  However, validation in Prisma is configured using TypeScript.  This class does not use TypeScript, so we'll use another data validation tool called Joi.  Some amount of data transformation may occur at the validation step, such as converting emails to lower case and trimming leading and trailing blanks.  Joi does that as well.
 
- Joi acts as your first line of defense by filtering out malicious data before it reaches your application. It prevents SQL injection by ensuring strings are properly formatted, blocks XSS attacks by validating and sanitizing input, and stops oversized requests that could crash your server. Joi's built-in methods like `.trim()`, `.escape()`, and length limits automatically clean and validate data, making your app much more secure.
+ Joi acts as your first line of defense by filtering out invalid data before it reaches your application. It helps ensure strings are properly formatted, blocks oversized requests that could crash your server, and can transform values with methods like `.trim()` and length limits.
 
 Validation can also help with one security problem.  You do not want users to use trivial passwords.  The password checking you'll do is not quite sufficient to protect against that, but it does help.  In a production application, you could use an npm package like `check-password-strength`.
 
@@ -48,7 +48,7 @@ When hashing the password, you should adhere to the following rules:
 
 2. Can you think of any create/update operations that would need only limited validation?
 
-3. Can you think of any security exposures created by limited validation?
+3. Can you think of any security exposures caused by limited validation?
 
 4. You shouldn't store passwords.  What else shouldn't you store?
 
