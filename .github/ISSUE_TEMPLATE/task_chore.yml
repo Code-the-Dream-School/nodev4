@@ -1,0 +1,32 @@
+name: Task / Chore
+description: Track internal tasks or project maintenance
+title: "[Task]: "
+labels: ["task"]
+
+body:
+  - type: textarea
+    attributes:
+      label: Task Description
+      description: Provide a clear description of the task or chore.
+      placeholder: |
+        Audit and update outdated project dependencies to improve
+        security, compatibility, and maintainability.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps / Checklist
+      description: Break the task into actionable steps
+      value: |
+        - [ ] Step 1
+        - [ ] Step 2
+        - [ ] Step 3
+
+  - type: textarea
+    attributes:
+      label: Additional Context
+      description: Any other information that helps clarify the task.
+      placeholder: |
+        Coordinate changes with the release schedule.
+        Reference any related documentation or prior maintenance tasks here.
