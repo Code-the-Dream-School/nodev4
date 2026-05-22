@@ -1,6 +1,6 @@
 ---
 name: Pull Request
-about: Use this template for any type of change: bug fix, feature, documentation, task, support, or security.
+about: "Use this template for any type of change: bug fix, feature, documentation, task, support, or security."
 ---
 
 # Description
