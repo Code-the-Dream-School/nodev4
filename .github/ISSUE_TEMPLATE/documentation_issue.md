@@ -1,7 +1,14 @@
 ---
 name: Documentation Issue
 about: Report missing, outdated, or unclear documentation
-labels: documentation
+title: "[Docs]: "
+
+# Automatically applies the "documentation" label
+labels:
+  - documentation
+
+# Sets the GitHub Issue Type
+type: task
 ---
 
 ## Description

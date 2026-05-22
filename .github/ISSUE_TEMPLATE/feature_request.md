@@ -1,7 +1,14 @@
 ---
 name: Feature Request
 about: Suggest a new feature or enhancement for the project
-labels: enhancement
+title: "[Feature]: "
+
+# Automatically applies the "enhancement" label
+labels:
+  - enhancement
+
+# Automatically sets the GitHub Issue Type
+type: feature
 ---
 
 ## Description

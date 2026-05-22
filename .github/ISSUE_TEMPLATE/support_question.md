@@ -1,7 +1,14 @@
 ---
 name: Support / Question
 about: Ask a question or request guidance
-labels: question
+title: "[Question]: "
+
+# Automatically applies the question label
+labels:
+  - question
+
+# Sets the GitHub Issue Type
+type: task
 ---
 
 ## Question

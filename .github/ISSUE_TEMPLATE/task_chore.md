@@ -1,7 +1,14 @@
 ---
 name: Task / Chore
 about: Track internal tasks or project maintenance
-labels: task
+title: "[Task]: "
+
+# Automatically applies the task label
+labels:
+  - task
+
+# Sets the GitHub Issue Type
+type: task
 ---
 
 ## Task Description

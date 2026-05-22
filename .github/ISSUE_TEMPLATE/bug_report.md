@@ -1,7 +1,14 @@
 ---
 name: Bug Report
 about: Report a problem or unexpected behavior in the project
-labels: bug
+title: "[Bug]: "
+
+# Automatically applies the "bug" label
+labels:
+  - bug
+
+# Automatically sets the GitHub Issue Type to "Bug"
+type: bug
 ---
 
 ## Description

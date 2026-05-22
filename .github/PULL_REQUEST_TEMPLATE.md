@@ -9,12 +9,15 @@ Provide a clear and concise description of what this PR does. Include motivation
 
 # Related Issue(s)
 
-Link to the issue(s) this PR addresses. Example: `Closes #123`
-(If no issue exists, describe the problem/feature request.)
+- Linked issue (if applicable): Closes #123 (replace #123 with actual issue number)
+
+If no issue exists, briefly describe the context or motivation for this PR below:
+
+<!-- Explain context here -->
 
 # Type of Change
 
-Please check the type(s) of change this PR represents:
+Please check the primary type of change this PR represents:
 
 - [ ] Bug fix (`bug_report.md`)
 - [ ] New feature (`feature_request.md`)
@@ -23,12 +26,18 @@ Please check the type(s) of change this PR represents:
 - [ ] Task / Chore (`task_chore.md`)
 - [ ] Security fix (`security_issue.md`)
 
+# Breaking Changes
+
+- [ ] This PR introduces breaking changes
+- [ ] No breaking changes
+
 # Checklist
 
-- [ ] u (See the [CONTRIBUTING.md](./../CONTRIBUTING.md) file)
-- [ ] I have tested my changes (if applicable)
-- [ ] I have added or updated tests (if applicable)
-- [ ] I have updated documentation if necessary
+- [ ] I have read the [CONTRIBUTING.md](./../CONTRIBUTING.md) file.
+- [ ] I have tested my changes locally (if applicable).
+- [ ] I have added or updated tests where needed (if applicable).
+- [ ] I have updated documentation where required.
+- [ ] Continuous Integration (CI) checks pass.
 - [ ] All tests pass
 
 # Additional Notes

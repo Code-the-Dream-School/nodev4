@@ -1,7 +1,17 @@
 ---
 name: Security Issue
 about: Report a potential security vulnerability (confidential)
-labels: security
+title: "[Security]: "
+
+# Automatically applies the security label
+labels:
+  - security
+
+# Sets the GitHub Issue Type
+type: task
+
+# Mark as a security-sensitive template (recommended best practice)
+assignees: []
 ---
 
 ## Description of Vulnerability
