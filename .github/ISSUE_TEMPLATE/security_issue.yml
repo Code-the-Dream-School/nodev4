@@ -1,0 +1,58 @@
+name: Security Issue
+description: Report a potential security vulnerability (confidential)
+title: "[Security]: "
+labels: ["security"]
+
+body:
+  - type: textarea
+    attributes:
+      label: Description of Vulnerability
+      description: Provide a detailed but careful description of the security issue. Do not include sensitive exploit steps publicly.
+      placeholder: |
+        A user may be able to access restricted data without proper
+        authorization when submitting malformed API requests.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps to Reproduce (Careful)
+      description: Include reproduction steps safely, or provide them privately to maintainers.
+      placeholder: |
+        1. Authenticate with a standard user account
+        2. Navigate to the affected endpoint
+        3. Modify the request parameter to reference another user's data
+        4. Observe unauthorized access behavior
+
+  - type: textarea
+    attributes:
+      label: Impact
+      description: Describe the severity and potential consequences of this vulnerability.
+      placeholder: |
+        This issue could allow unauthorized access to sensitive user
+        information, potentially affecting data privacy and compliance.
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Environment
+      description: OS / Platform, software version, configuration details
+      placeholder: "Example: Ubuntu 24.04, Node.js 22.x, Docker deployment"
+
+  - type: textarea
+    attributes:
+      label: Mitigation / Recommendations
+      description: Include supporting details, references, or related observations.
+      placeholder: |
+        Validate authorization checks on all affected endpoints and
+        restrict access to resources based on authenticated user roles.
+
+  - type: textarea
+    attributes:
+      label: Additional Context
+      description: Include supporting details, references, or related observations.
+      placeholder: |
+        Include logs, screenshots, references to security advisories,
+        related vulnerabilities, or additional notes that may help
+        maintainers investigate the issue.

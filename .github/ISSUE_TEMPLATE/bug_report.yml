@@ -1,0 +1,53 @@
+name: Bug Report
+description: Report a problem or unexpected behavior in the project
+title: "[Bug]: "
+labels: ["bug"]
+
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: Describe the bug in detail
+      placeholder: |
+        The application crashes when submitting the login form with
+        valid credentials under certain network conditions.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps to Reproduce
+      placeholder: |
+        1. Open the application
+        2. Navigate to the login page
+        3. Enter valid credentials
+        4. Click submit
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: What you expected to happen instead of the bug
+      placeholder: |
+        The user should be logged in and redirected to the dashboard.
+
+  - type: textarea
+    attributes:
+      label: Actual Behavior
+      description: What actually happened when the bug occurred
+      placeholder: |
+        The application throws a 500 error and the user remains on the login page.
+
+  - type: input
+    attributes:
+      label: Operating System
+      description: The operating system where the issue occurred
+      placeholder: "Example: macOS Sonoma 14.2"
+
+  - type: textarea
+    attributes:
+      label: Screenshots / Logs
+      description: Attach screenshots, error logs, or console output if available
+      placeholder: |
+        Paste error logs here or drag and drop screenshots into the issue.

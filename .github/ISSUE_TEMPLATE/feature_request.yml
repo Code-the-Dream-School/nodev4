@@ -1,0 +1,51 @@
+name: Feature Request
+description: Suggest a new feature or enhancement for the project
+title: "[Feature]: "
+labels: ["enhancement"]
+
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: Clearly describe the feature or enhancement you are requesting.
+      placeholder: |
+        Add dark mode support to improve accessibility and usability
+        in low-light environments.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve? Why is it needed?
+      placeholder: |
+        The current interface uses a light-only theme, which may cause
+        eye strain for users working at night or in dim environments.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Proposed Solution
+      description: Describe how this feature could be implemented. Include examples, sketches, or mockups if applicable.
+      placeholder: |
+        Add a theme toggle in the application settings that allows users
+        to switch between light mode and dark mode. Store the preference
+        locally so it persists across sessions.
+
+  - type: textarea
+    attributes:
+      label: Alternatives Considered
+      description: List any alternative approaches or solutions you considered.
+      placeholder: |
+        - Use the operating system theme preference automatically
+        - Add a high-contrast accessibility theme instead of full dark mode
+        - Provide browser extension recommendations as a temporary workaround
+
+  - type: textarea
+    attributes:
+      label: Additional Context
+      description: Any other information or references to help us understand your request.
+      placeholder: |
+        Include screenshots, mockups, examples from similar applications,
+        or links to related discussions and feature requests.
